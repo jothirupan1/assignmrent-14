@@ -1,15 +1,28 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 function Nav() {
   const location = useLocation();
+  const navigate = useNavigate();
+
+  const goToContact = () => {
+    if (location.pathname !== "/Home") {
+      navigate("/Home");
+      setTimeout(() => {
+        const el = document.getElementById("Contact");
+        if (el) el.scrollIntoView({ behavior: "smooth" });
+      }, 100);
+    } else {
+      const el = document.getElementById("Contact");
+      if (el) el.scrollIntoView({ behavior: "smooth" });
+    }
+  };
 
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light fixed-top">
       <div className="container">
-        <a href="" className="navbar-brand fw-bold text-uppercase">
+        <a href="/" className="navbar-brand fw-bold text-uppercase">
           Legacy Mart
         </a>
-
         <button
           className="navbar-toggler"
           type="button"
@@ -38,20 +51,13 @@ function Nav() {
               </Link>
             </li>
             <li className="nav-item">
-              <Link
-                to="/Home#Contact"
-                className="nav-link fw-bold ms-2"
-                onClick={() => {
-                  if (location.pathname !== "/Home") {
-                    window.location.href = "/Home#Contact";
-                  } else {
-                    const el = document.getElementById("Contact");
-                    if (el) el.scrollIntoView({ behavior: "smooth" });
-                  }
-                }}
+              <button
+                className="nav-link fw-bold ms-2 btn btn-link"
+                style={{ textDecoration: "none" }}
+                onClick={goToContact}
               >
                 CONTACT
-              </Link>
+              </button>
             </li>
           </ul>
         </div>
@@ -59,4 +65,5 @@ function Nav() {
     </nav>
   );
 }
+
 export default Nav;
