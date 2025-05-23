@@ -22,6 +22,9 @@ function Nav() {
               <li className="nav-item">
                 <a href="#Contact" className="nav-link fw-bold ms-2">CONTACT</a>
               </li>
+               <li className="nav-item">
+                <a href="#Contact" className="nav-link fw-bold ms-2">CONTACT</a>
+              </li>
             </ul>
           </div>
 
